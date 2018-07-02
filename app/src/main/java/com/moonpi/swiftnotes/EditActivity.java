@@ -242,9 +242,8 @@ public class EditActivity extends AppCompatActivity implements Toolbar.OnMenuIte
                 .setNegativeButton(R.string.no_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // If 'No' clicked in new note -> put extra 'discard' to show toast
-                        if (bundle != null && bundle.getInt(NOTE_REQUEST_CODE) ==
-                                NEW_NOTE_REQUEST) {
+                        // If 'No' clicked  -> put extra 'discard' to show toast
+                        if (bundle != null) {
 
                             Intent intent = new Intent();
                             intent.putExtra("request", "discard");
@@ -373,8 +372,9 @@ public class EditActivity extends AppCompatActivity implements Toolbar.OnMenuIte
                     !(colour.equals(bundle.getString(NOTE_COLOUR))) ||
                     fontSize != bundle.getInt(NOTE_FONT_SIZE) ||
                     hideBody != bundle.getBoolean(NOTE_HIDE_BODY)) {
-
-                    saveChanges();
+                    //User's confirm is required to handle change cancellation case.
+                    saveChangesDialog.show();
+                    //saveChanges();
                 }
 
                 else {

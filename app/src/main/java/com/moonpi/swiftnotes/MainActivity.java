@@ -841,13 +841,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Bundle mBundle = null;
 
             // If data is not null, has "request" extra and is new note -> get extras to bundle
-            if (data != null && data.hasExtra("request") && requestCode == NEW_NOTE_REQUEST) {
+            if (data != null && data.hasExtra("request")) {
                 mBundle = data.getExtras();
 
                 // If new note discarded -> toast empty note discarded
                 if (mBundle != null && mBundle.getString("request").equals("discard")) {
+                    String message=requestCode == NEW_NOTE_REQUEST?getResources().getString(R.string.toast_empty_note_discarded):getResources().getString(R.string.toast_note_update_discarded);
                     Toast toast = Toast.makeText(getApplicationContext(),
-                            getResources().getString(R.string.toast_empty_note_discarded),
+                            message,
                             Toast.LENGTH_SHORT);
                     toast.show();
                 }

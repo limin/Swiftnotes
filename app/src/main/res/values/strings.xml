@@ -70,5 +70,6 @@
     <string name="toast_backup_no_notes">No notes to backup</string>
     <string name="toast_restore_successful">Notes restored</string>
     <string name="toast_restore_unsuccessful">Restore unsuccessful</string>
+    <string name="toast_note_update_discarded">Note update discarded</string>
 
 </resources>
